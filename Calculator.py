@@ -4,6 +4,44 @@ currentText = '0'
 num = 0
 op = ''
 
+def calculate():
+    global currentText
+    global num
+    global op
+
+    currentNum = float(currentText)
+    result = 0
+    if op == '+':
+        result = num + currentNum
+    if op == '-':
+        result = num - currentNum
+    if op == '*':
+        result = num * currentNum
+    if op == '/':
+        result = num / currentNum
+
+
+
+    num = result
+    currentText = str(result)
+    updateText()
+
+def operation(str):
+    global currentText
+    global num
+    global op
+    if op == '':
+        num = float(currentText)
+        currentText = '0'
+    else:
+        calculate()
+
+    if str == '=':
+        op = ''
+    else:
+        op = str
+        currentText = '0'
+
 def plus_minus():
     global  currentText
     if '-' in currentText:
@@ -66,13 +104,13 @@ btnFrame.grid(row=1, column=0, padx=5, pady=5)
 btnCE = ctk.CTkButton(btnFrame, width=85, height=70, text='CE', font=ctk.CTkFont(size=40), fg_color='gray', command=CE)
 btnCE.grid(row=0, column=0, padx=2, pady=2)
 
-btnSquared = ctk.CTkButton(btnFrame, width=85, height=70, text = 'x^2', font=ctk.CTkFont(size=40), fg_color='gray')
+btnSquared = ctk.CTkButton(btnFrame, width=85, height=70, text = '%', font=ctk.CTkFont(size=40), fg_color='gray', command=lambda : operation('%'))
 btnSquared.grid(row=0, column=1, padx=2, pady=2)
 
 btnBack = ctk.CTkButton(btnFrame, width=85, height=70, text = '<--', font=ctk.CTkFont(size=40), fg_color='gray', command=Back)
 btnBack.grid(row=0, column=2, padx=2, pady=2)
 
-btnDivide = ctk.CTkButton(btnFrame, width=75, height=70, text = '/', font=ctk.CTkFont(size=40), fg_color='gray')
+btnDivide = ctk.CTkButton(btnFrame, width=75, height=70, text = '/', font=ctk.CTkFont(size=40), fg_color='gray', command=lambda : operation('/'))
 btnDivide.grid(row=0, column=3, padx=2, pady=2)
 
 btnSeven = ctk.CTkButton(btnFrame, width=85, height=70, text = '7', font=ctk.CTkFont(size=40), command=lambda: addText('7'))
@@ -84,7 +122,7 @@ btnEight.grid(row=1, column=1, padx=2, pady=2)
 btnNine = ctk.CTkButton(btnFrame, width=85, height=70, text = '9', font=ctk.CTkFont(size=40), command=lambda: addText('9'))
 btnNine.grid(row=1, column=2, padx=2, pady=2)
 
-btnMulti = ctk.CTkButton(btnFrame, width=75, height=70, text = 'X', font=ctk.CTkFont(size=40), fg_color='gray')
+btnMulti = ctk.CTkButton(btnFrame, width=75, height=70, text = 'X', font=ctk.CTkFont(size=40), fg_color='gray', command=lambda : operation('*'))
 btnMulti.grid(row=1, column=3, padx=2, pady=2)
 
 btnFour = ctk.CTkButton(btnFrame, width=85, height=70, text = '4', font=ctk.CTkFont(size=40), command=lambda: addText('4'))
@@ -96,7 +134,7 @@ btnFive.grid(row=2, column=1, padx=2, pady=2)
 btnSix = ctk.CTkButton(btnFrame, width=85, height=70, text = '6', font=ctk.CTkFont(size=40), command=lambda: addText('6'))
 btnSix.grid(row=2, column=2, padx=2, pady=2)
 
-btnMinus = ctk.CTkButton(btnFrame, width=75, height=70, text = '-', font=ctk.CTkFont(size=40), fg_color='gray')
+btnMinus = ctk.CTkButton(btnFrame, width=75, height=70, text = '-', font=ctk.CTkFont(size=40), fg_color='gray', command=lambda : operation('-'))
 btnMinus.grid(row=2, column=3, padx=2, pady=2)
 
 btnOne = ctk.CTkButton(btnFrame, width=85, height=70, text = '1', font=ctk.CTkFont(size=40), command=lambda: addText('1'))
@@ -108,7 +146,7 @@ btnTwo.grid(row=3, column=1, padx=2, pady=2)
 btnThree = ctk.CTkButton(btnFrame, width=85, height=70, text = '3', font=ctk.CTkFont(size=40), command=lambda: addText('3'))
 btnThree.grid(row=3, column=2, padx=2, pady=2)
 
-btnPlus = ctk.CTkButton(btnFrame, width=75, height=70, text = '+', font=ctk.CTkFont(size=40), fg_color='gray')
+btnPlus = ctk.CTkButton(btnFrame, width=75, height=70, text = '+', font=ctk.CTkFont(size=40), fg_color='gray', command=lambda : operation('+'))
 btnPlus.grid(row=3, column=3, padx=2, pady=2)
 
 btnPM = ctk.CTkButton(btnFrame, width=85, height=70, text = '+/-', font=ctk.CTkFont(size=40), command=plus_minus)
@@ -120,7 +158,7 @@ btnZero.grid(row=4, column=1, padx=2, pady=2)
 btnDot = ctk.CTkButton(btnFrame, width=85, height=70, text = '.', font=ctk.CTkFont(size=40), command=lambda : addText('.'))
 btnDot.grid(row=4, column=2, padx=2, pady=2)
 
-btnEqual = ctk.CTkButton(btnFrame, width=75, height=70, text = '=', font=ctk.CTkFont(size=40), fg_color='gray')
+btnEqual = ctk.CTkButton(btnFrame, width=75, height=70, text = '=', font=ctk.CTkFont(size=40), fg_color='gray', command=lambda : operation('='))
 btnEqual.grid(row=4, column=3, padx=2, pady=2)
 
 
