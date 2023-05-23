@@ -19,6 +19,9 @@ def calculate():
         result = num * currentNum
     if op == '/':
         result = num / currentNum
+    if op == '%':
+        currentNum = currentNum / 100
+        updateText()
 
 
 

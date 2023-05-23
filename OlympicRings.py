@@ -1,7 +1,7 @@
 # program to draw olympic rings with turtle
 from turtle import *
 penup()
-pensize(5)
+pensize(25)
 pencolor('blue')
 goto(-400, 100)
 pendown()
